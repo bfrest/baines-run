@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import CheckoutButton from "./CheckoutButtons";
 import "./Checkout.css";
+import Ticket from "./Ticket";
 
 function App() {
   // hold ticket amount
@@ -19,7 +20,9 @@ function App() {
     setTotalPrice(totalPrice + ticketInfo.price);
   };
 
-  useEffect(() => console.log(order, totalPrice), [order]);
+  useEffect(() => {
+    console.log(order, totalPrice);
+  }, [order]);
 
   return (
     <div className="">
@@ -103,7 +106,14 @@ function App() {
         </button>
       </ul>
 
-      <CheckoutButton totalPrice={totalPrice} />
+      <form>
+        <input type="name" placeholder="Full Name" />
+        <input type="email" placeholder="E-mail" />
+      </form>
+
+      <CheckoutButton totalPrice={totalPrice} order={order} />
+
+      <Ticket />
     </div>
   );
 }
