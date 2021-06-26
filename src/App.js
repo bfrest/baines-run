@@ -9,6 +9,8 @@ function App() {
   const [totalPrice, setTotalPrice] = useState(0);
   const [adultShirtSize, setAdultShirtSize] = useState(null);
   const [childShirtSize, setChildShirtSize] = useState(null);
+  const [name, setName] = useState(null);
+  const [email, setEmail] = useState(null);
 
   // create function to add items to order
   const addToOrder = (ticketInfo) => {
@@ -107,13 +109,14 @@ function App() {
       </ul>
 
       <form>
-        <input type="name" placeholder="Full Name" />
-        <input type="email" placeholder="E-mail" />
+        <h1>Ticket info</h1>
+        <input type="name" placeholder="Full Name" onChange={(e) => setName(e.target.value)} />
+        <input type="email" placeholder="E-mail" onChange={(e) => setEmail(e.target.value)} />
       </form>
 
-      <CheckoutButton totalPrice={totalPrice} order={order} />
+      <CheckoutButton totalPrice={totalPrice} order={order} name={name} />
 
-      <Ticket />
+      {/* <Ticket /> */}
     </div>
   );
 }
